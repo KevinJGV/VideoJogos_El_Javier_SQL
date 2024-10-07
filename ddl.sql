@@ -1,0 +1,1 @@
+CREATE DATABASE IF NOT EXISTS `Videojuegos_El_Javier`;
