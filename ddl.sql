@@ -41,7 +41,7 @@ CREATE Table IF NOT EXISTS Clientes (
     Nombre_Completo VARCHAR(256) NOT NULL,
     Correo_Electronico VARCHAR(128) NOT NULL UNIQUE,
     Direccion VARCHAR(128) NOT NULL,
-    Telefono INT NOT NULL UNIQUE
+    Telefono BIGINT NOT NULL UNIQUE
 )
 
 CREATE Table IF NOT EXISTS Ventas (
@@ -59,20 +59,20 @@ CREATE Table IF NOT EXISTS Categorias (
     Nombre VARCHAR(128) NOT NULL UNIQUE
 )
 
-CREATE Table IF NOT EXISTS Proovedores (
-    ID_Proovedor INT PRIMARY KEY AUTO_INCREMENT,
+CREATE Table IF NOT EXISTS Proveedores (
+    ID_Proveedor INT PRIMARY KEY AUTO_INCREMENT,
     Nombre_Empresa VARCHAR(128) NOT NULL,
     Nombre_Contacto VARCHAR(128) NOT NULL,
-    Telefono INT NOT NULL,
+    Telefono BIGINT NOT NULL,
     Direccion VARCHAR(128) NOT NULL
 )
 
-CREATE Table IF NOT EXISTS Compras_Proovedores (
+CREATE Table IF NOT EXISTS Compras_Proveedores (
     ID_Compra INT PRIMARY KEY AUTO_INCREMENT,
-    ID_Proovedor INT NOT NULL,
+    ID_Proveedor INT NOT NULL,
     Fecha DATE NOT NULL,
     Valor_Total INT NOT NULL,
-    Foreign Key (ID_Proovedor) REFERENCES Proovedores (ID_Proovedor)
+    Foreign Key (ID_Proveedor) REFERENCES Proveedores (ID_Proveedor)
 )
 
 CREATE Table IF NOT EXISTS Productos (
@@ -83,7 +83,7 @@ CREATE Table IF NOT EXISTS Productos (
     Descripcción VARCHAR(255) NOT NULL,
     Precio INT NOT NULL,
     Stock_disponible INT NOT NULL,
-    Foreign Key (ID_Proveedor) REFERENCES Proovedores (ID_Proovedor),
+    Foreign Key (ID_Proveedor) REFERENCES Proveedores (ID_Proveedor),
     Foreign Key (ID_Categoria) REFERENCES Categorias (ID_Categoria)
 )
 
@@ -108,14 +108,14 @@ CREATE TABLE IF NOT EXISTS Consolas_Accesorios (
     FOREIGN KEY (ID_Color) REFERENCES Colores (ID_Color)
 );
 
-CREATE Table IF NOT EXISTS Detalle_Compras_Proovedores (
+CREATE Table IF NOT EXISTS Detalle_Compras_Proveedores (
     ID_Detalle INT PRIMARY KEY AUTO_INCREMENT,
     ID_Producto INT NOT NULL,
     ID_Compra INT NOT NULL,
     Cantidad INT NOT NULL,
     Subtotal INT NOT NULL,
     Foreign Key (ID_Producto) REFERENCES Productos (ID_Producto),
-    Foreign Key (ID_Compra) REFERENCES Compras_Proovedores (ID_Compra)
+    Foreign Key (ID_Compra) REFERENCES Compras_Proveedores (ID_Compra)
 )
 
 CREATE Table IF NOT EXISTS Detalle_Ventas (
