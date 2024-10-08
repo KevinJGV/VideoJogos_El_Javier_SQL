@@ -13,13 +13,13 @@ CALL ClienteEspFecha(6, "2024-08-30", "2024-10-30")
 CALL EmpleadoMesVentas(3, "September")
 
 -- Listar los productos más vendidos en un período determinado.
-
+CALL ProductosPeriodo("2024-09-24", "2024-09-26")
 
 -- Consultar el stock disponible de un producto por su nombre.
-
+CALL ProductoStock("Zelda: Breath of the Wild")
 
 -- Mostrar las órdenes de compra realizadas a un proveedor específico en el último año.
-
+CALL CompraProveedorAño()
 
 -- Listar los empleados que han trabajado más de un año en la tienda.
 
@@ -29,4 +29,33 @@ CALL EmpleadoMesVentas(3, "September")
 
 -- Consultar las ventas de un producto específico (por nombre o ID) y cuántas unidades se vendieron.
 
+
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    -- SELECT
+    --     pro.`Nombre_Contacto` AS "NombreProveedor",
+    --     pro.`Nombre_Empresa` AS "NombreEmpresa",
+    --     pro.`Direccion` AS "DireccionEmpresa",
+    --     pro.`Telefono` AS "TelefonoProveedor",
+    --     ca.`Nombre` AS "Categoria",
+    --     pr.`Nombre` AS "ProductoNombre",
+    --     pr.`Descripcción` AS "ProductoDescripcion",
+    --     pr.`Precio` AS "ProductoPrecio",
+    --     pr.`Stock_disponible` AS "ProductoStock"
+    -- FROM
+    --     `Productos` pr
+    -- INNER JOIN `Categorias` ca ON pr.`ID_Categoria` = ca.`ID_Categoria`
+    -- INNER JOIN `Proveedores` pro ON pr.`ID_Proveedor` = pro.`ID_Proveedor`
+    -- WHERE 
