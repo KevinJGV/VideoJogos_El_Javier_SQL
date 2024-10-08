@@ -1,3 +1,5 @@
+USE Videojuegos_El_Javier;
+
 -- Inserciones en la tabla Generos
 INSERT INTO
     Generos (Nombre)
