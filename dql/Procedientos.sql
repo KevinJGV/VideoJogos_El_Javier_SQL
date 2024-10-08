@@ -126,4 +126,48 @@ BEGIN
     WHERE YEAR(cp.`Fecha`) <= YEAR(DATE_SUB(NOW(), INTERVAL 1 YEAR));
 END //
 
+-- Listar los empleados que han trabajado más de un año en la tienda.
+CREATE PROCEDURE EmpleadosMasDeUnAño()
+BEGIN
+    SELECT
+        E.Nombre,
+        E.Apellido,
+        E.Fecha_Contratacion,
+        TIMESTAMPDIFF(YEAR, E.Fecha_Contratacion, CURDATE()) AS Años_Trabajados
+    FROM
+        Empleados E
+    WHERE
+        TIMESTAMPDIFF(YEAR, E.Fecha_Contratacion, CURDATE()) > 1;
+END //
+
+-- Obtener la cantidad total de productos vendidos en un día específico.
+CREATE PROCEDURE TotalProductosVendidosEnUnDia(IN FechaConsulta DATE)
+BEGIN
+    SELECT
+        SUM(DV.Cantidad) AS Total_Productos_Vendidos
+    FROM
+        Ventas V
+    JOIN Detalle_Ventas DV ON V.ID_Venta = DV.ID_Venta
+    WHERE
+        V.Fecha = FechaConsulta;
+END //
+
+-- Consultar las ventas de un producto específico (por nombre o ID) y cuántas unidades se vendieron.
+CREATE PROCEDURE VentasXProducto(IN ID_Producto INT)
+BEGIN
+    IF NOT (ID_Producto REGEXP '^[0-9]+$') THEN
+        SELECT 'ID de producto Inválido' AS MSG_ERROR;
+    ELSE
+        SELECT
+            P.Nombre AS Producto,
+            DV.ID_Venta AS Código_Venta,
+            DV.Cantidad
+        FROM
+            Productos P
+        JOIN Detalle_Ventas DV ON P.ID_Producto = DV.ID_Producto
+        WHERE
+            P.ID_Producto = CAST(ID_Producto AS UNSIGNED);
+    END IF;
+END //
+
 DELIMITER ;

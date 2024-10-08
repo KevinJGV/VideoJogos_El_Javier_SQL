@@ -22,40 +22,10 @@ CALL ProductoStock("Zelda: Breath of the Wild")
 CALL CompraProveedorAño()
 
 -- Listar los empleados que han trabajado más de un año en la tienda.
-
+CALL EmpleadosMasDeUnAño()
 
 -- Obtener la cantidad total de productos vendidos en un día específico.
-
+CALL TotalProductosVendidosEnUnDia('2024-09-28')
 
 -- Consultar las ventas de un producto específico (por nombre o ID) y cuántas unidades se vendieron.
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    -- SELECT
-    --     pro.`Nombre_Contacto` AS "NombreProveedor",
-    --     pro.`Nombre_Empresa` AS "NombreEmpresa",
-    --     pro.`Direccion` AS "DireccionEmpresa",
-    --     pro.`Telefono` AS "TelefonoProveedor",
-    --     ca.`Nombre` AS "Categoria",
-    --     pr.`Nombre` AS "ProductoNombre",
-    --     pr.`Descripcción` AS "ProductoDescripcion",
-    --     pr.`Precio` AS "ProductoPrecio",
-    --     pr.`Stock_disponible` AS "ProductoStock"
-    -- FROM
-    --     `Productos` pr
-    -- INNER JOIN `Categorias` ca ON pr.`ID_Categoria` = ca.`ID_Categoria`
-    -- INNER JOIN `Proveedores` pro ON pr.`ID_Proveedor` = pro.`ID_Proveedor`
-    -- WHERE 
+CALL VentasXProducto(1)
